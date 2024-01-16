@@ -1,11 +1,152 @@
 Why did we create this unit called gas?
 
+The concept of "gas" in the context of blockchain technology, particularly in Ethereum and other similar platforms, serves a different purpose compared to its conventional meaning in physical sciences or commerce. In blockchain, "gas" refers to a unit that measures the computational effort required to execute operations, like transactions or smart contracts, on the network. Here's why this concept was created:
+Limiting and Allocating Resources: Blockchain networks have limited computational resources. Gas is used to allocate these resources fairly among users. By requiring gas for operations, the network ensures that no single user or application can monopolize the network's processing capacity.
+Preventing Network Abuse: Gas fees help to prevent spam and denial-of-service attacks. Since each operation costs gas, malicious actors are disincentivized from flooding the network with meaningless transactions or operations that could clog or disrupt the system.
+Transaction Prioritization: Gas prices can fluctuate based on network demand. Users can choose to pay higher gas fees for faster transaction processing, creating a market mechanism for transaction prioritization. This helps in managing network congestion during high demand periods.
+Encouraging Efficient Coding: In platforms like Ethereum, where smart contracts are common, gas costs encourage developers to write optimized and efficient code. Since more complex operations require more gas, there is a financial incentive to keep contracts simple and resource-efficient.
+Economic Model for Validators/Miners: Gas fees are a source of revenue for the validators or miners who process transactions and secure the blockchain network. This incentivizes them to continue supporting the network.
+Decentralization and Security: By tying computational effort to a cost (gas), blockchain networks ensure a more secure and decentralized system. It becomes economically unfeasible for malicious actors to gain control over the network.
 
+Why not trade directly in Ether?
+The concept of "gas" in the context of blockchain technology, particularly in Ethereum and other similar platforms, serves a different purpose compared to its conventional meaning in physical sciences or commerce. In blockchain, "gas" refers to a unit that measures the computational effort required to execute operations, like transactions or smart contracts, on the network. Here's why this concept was created:
+Limiting and Allocating Resources: Blockchain networks have limited computational resources. Gas is used to allocate these resources fairly among users. By requiring gas for operations, the network ensures that no single user or application can monopolize the network's processing capacity.
+Preventing Network Abuse: Gas fees help to prevent spam and denial-of-service attacks. Since each operation costs gas, malicious actors are disincentivized from flooding the network with meaningless transactions or operations that could clog or disrupt the system.
+Transaction Prioritization: Gas prices can fluctuate based on network demand. Users can choose to pay higher gas fees for faster transaction processing, creating a market mechanism for transaction prioritization. This helps in managing network congestion during high demand periods.
+Encouraging Efficient Coding: In platforms like Ethereum, where smart contracts are common, gas costs encourage developers to write optimized and efficient code. Since more complex operations require more gas, there is a financial incentive to keep contracts simple and resource-efficient.
+Economic Model for Validators/Miners: Gas fees are a source of revenue for the validators or miners who process transactions and secure the blockchain network. This incentivizes them to continue supporting the network.
+Decentralization and Security: By tying computational effort to a cost (gas), blockchain networks ensure a more secure and decentralized system. It becomes economically unfeasible for malicious actors to gain control over the network.
+
+Why can't you incentivize efficient code trading directly in Ether?
+Incentivizing efficient code while trading directly in Ether, without the concept of gas, presents several challenges:
+Volatile Transaction Costs: Ether's price is subject to market volatility. If transaction costs were directly in Ether, the cost for executing code on the Ethereum network would fluctuate significantly. This volatility makes it difficult for developers to estimate the cost of deploying and interacting with smart contracts. Gas units, on the other hand, provide a more stable measure of computational work, separate from the changing value of Ether.
+Granular Pricing Difficulty: Gas units allow for fine-grained pricing of computational effort. Each operation in the Ethereum Virtual Machine (EVM) has a specific gas cost associated with it. This granular approach would be more challenging to implement directly with Ether due to its higher value and less divisible nature. Gas units can be priced very precisely, making it possible to accurately reflect the computational cost of each operation.
+Resource Allocation and Network Health: Gas limits prevent transactions or contracts from consuming excessive network resources. If transaction costs were solely in Ether, without a separate gas limit, it could lead to network abuse, such as unintentional infinite loops or deliberately resource-intensive computations. The gas system ensures that each transaction can only consume a limited amount of computational resources, protecting the network from overload.
+Predictable Miner Compensation: Miners are compensated based on the amount of computational work they do, measured in gas. If compensation were based solely on Ether, the fluctuating value of Ether could lead to unpredictable compensation for miners. The gas system provides a more predictable and fair compensation model, encouraging miners to continue processing transactions.
+Encouraging Efficient Code Development: With a gas system, developers are incentivized to optimize their code to minimize the gas required, directly impacting the cost of running the contract. This incentive might be less direct and effective if costs were solely based on Ether, especially if the Ether cost per transaction did not accurately reflect the computational complexity.
+
+Why is gas easier to solve these challenges?
+The concept of "gas" in blockchain, particularly in Ethereum, offers a solution to these challenges primarily because it provides a separate and flexible layer for measuring and charging for computational work. Here's how it addresses the challenges more effectively:
+Stable Measurement of Computational Work: Gas provides a stable unit of measure for computational work, irrespective of the volatility in Ether's price. The cost of a computation is measured in units of gas, and then the gas price (how much Ether one is willing to pay per unit of gas) can be adjusted according to market conditions. This separation allows for predictable costs for computational work, even as the value of Ether fluctuates.
+Fine-Grained Pricing and Resource Allocation: Gas units allow for precise measurement of the computational effort required for each operation on the Ethereum network. This granularity helps in effectively allocating network resources and setting transaction limits, thus preventing abuse and ensuring network efficiency. Each operation, from a simple transfer to a complex smart contract execution, has a defined gas cost, which helps in managing network resources and avoiding congestion.
+Incentive for Efficient Code: By charging for every computational step, gas incentivizes developers to optimize their code. More efficient code consumes less gas, thereby costing less to execute. This encourages the development of well-optimized smart contracts, contributing to overall network efficiency.
+
+Gas is built into Ethereum as a core part of its protocol, specifically designed to measure, limit, and price the computational effort needed to execute transactions and smart contracts on the network. Here's how it is integrated into the system:
+Ethereum Virtual Machine (EVM): The Ethereum Virtual Machine, the runtime environment for smart contracts in Ethereum, has gas as an integral part of its execution model. Every operation that can be performed by the EVM, whether it's a simple transaction or a complex smart contract function, has a predetermined gas cost, which is specified in the Ethereum Yellow Paper (the formal specification of the Ethereum protocol).
+Transaction Structure: Each Ethereum transaction includes fields for gas: the gas limit and the gas price. The gas limit is the maximum amount of gas the user is willing to consume for the transaction. The gas price is the amount of Ether the user is willing to pay per unit of gas. These fields are essential parts of the transaction's data structure and are used by the network to calculate the transaction fee and limit the resources used by the transaction.
+Consensus Rules: The Ethereum consensus rules, which govern how the network reaches agreement, include rules about gas. These rules determine how transactions are processed, how gas is calculated and spent, and under what conditions a transaction might run out of gas and be reverted.
+Miner and Validator Incentives: Miners (in proof-of-work) or validators (in proof-of-stake, as in Ethereum 2.0) are incentivized to include transactions in the blocks they mine or validate. They receive transaction fees, which are based on the amount of gas used by the transactions and the gas price. These incentives are built into the protocol to ensure that the network remains secure and transactions are processed efficiently.
+Smart Contract Execution: When a smart contract is executed, the EVM keeps track of the gas used at each step. If the execution uses up all the gas allotted to it (as per the gas limit), the execution stops and the transaction is reverted, but the gas used is still paid. This mechanism prevents infinite loops and ensures efficient contract execution.
+Network Upgrades (Hard Forks): Ethereum has undergone several network upgrades or hard forks, some of which have included adjustments to gas costs and gas-related mechanics. These changes are part of the protocol's evolution to maintain efficiency, security, and scalability.
+
+Who determines the price of gas?
+The gas price is not set by any single entity but is determined by market dynamics. Users submitting transactions to the Ethereum network specify how much they are willing to pay per unit of gas (measured in gwei, which is a fraction of Ether). This is the gas price.
+Miners (or validators in Ethereum 2.0) then choose which transactions to include in the blocks they mine. Typically, they prioritize transactions with higher gas prices because these transactions offer higher rewards.
+In periods of high demand, the gas price can increase as users compete to have their transactions included in blocks. Conversely, when network demand is low, gas prices can decrease.
+Ethereum's EIP-1559 update introduced a mechanism that adjusts the base fee for transactions based on network congestion, adding a more predictable and automated component to gas pricing. Users can still pay a tip (priority fee) to miners to prioritize their transactions.
 
 What happen if these 2 hypothetical transactions were sent?*
 Bob only has 1 ether in his wallet
 Bob sends 1 ether to Alice with Tx 1
 At the same time, Bob sends 1 ether to Jim with Tx 2
+
+Transaction Selection by Miners/Validators: Both transactions (Tx 1 to Alice and Tx 2 to Jim) enter the pool of unconfirmed transactions. Miners or validators will select transactions from this pool to include in the next block. The selection is often influenced by the gas price set for each transaction; higher gas prices typically make a transaction more attractive to miners/validators.
+
+Processing of Transactions: The Ethereum network processes transactions sequentially. This means that one of Bob's transactions will be processed before the other, depending on which transaction gets included in a block first.
+
+Outcome of the First Transaction:
+If the first transaction processed (say, Tx 1 to Alice) is confirmed and Bob has enough Ether to cover both the amount sent and the transaction fee, this transaction will be successful. Bob's account balance will be reduced by the amount sent and the transaction fee.
+Bob's remaining Ether balance after the first transaction could be less than 1 Ether, considering the transaction fee.
+Outcome of the Second Transaction:
+By the time the second transaction (say, Tx 2 to Jim) is processed, Bob's balance may no longer have enough Ether to cover another 1 Ether transfer and the transaction fee. If this is the case, the second transaction will fail due to insufficient funds.
+Ethereum's transaction model ensures that each transaction reflects the current state of the blockchain. If Bob's balance is insufficient for the second transaction at the time it's processed, the network will reject it.
+Failed Transaction and Gas Fees:
+It's important to note that if a transaction fails due to insufficient balance, the Ether intended for transfer is not deducted. However, the user may still incur a gas fee for the computational work done until the point of failure.
+
+In the Ethereum network, if a transaction fails due to insufficient balance, and the sender has no Ether left to cover the gas fee, the transaction will not go through, and no gas fee will be charged. Here's how this works:
+Transaction Validation: Before a transaction is processed and included in a block, it undergoes an initial validation. This includes checking whether the sender's account has enough balance to cover both the Ether being sent and the gas fee for the transaction.
+Insufficient Balance Prevention: If the sender's account does not have enough Ether to cover both the value of the transaction and the gas fee, the Ethereum network will reject the transaction outright. It will not be processed, included in a block, or broadcast to the network. Since the transaction is not executed at all, no gas fee is incurred.
+No Negative Balance: Ethereum does not allow accounts to go into a negative balance. A user cannot spend more Ether than they have, including the cost of the transaction itself and the associated gas fees.
+Gas Fee Deduction: The gas fee is deducted from the sender's account only if a transaction is processed and executed (even if it eventually fails due to other reasons, like an error in smart contract execution or reaching a gas limit). If a transaction is rejected before execution due to insufficient funds, there is no deduction of a gas fee.
+
 Since Ethereum is Turing complete, is it possible to do all kind of computation?
+Ethereum is indeed Turing complete, thanks to the capabilities of its smart contract system, specifically the Ethereum Virtual Machine (EVM). Turing completeness means that, in theory, the system can perform any computation given enough time and resources. However, in practice, there are several important constraints and considerations:
+Gas Limit: Each transaction or smart contract execution in Ethereum requires gas, which limits the amount of computational work that can be done. This is to prevent issues like infinite loops and to ensure the network remains efficient and stable. So, while the EVM is theoretically capable of performing any computation, in practice, the computations are limited by the gas that the transaction can afford.
+Performance Considerations: Ethereum's blockchain is not designed for high-performance computing tasks. Computations in Ethereum are slower and more expensive compared to traditional computing environments. This is due to the decentralized nature of blockchain, where every operation must be processed and validated by multiple nodes in the network.
+Practical Limitations: Some types of computations, especially those that are resource-intensive or require significant processing speed, are not practical on Ethereum. Examples include large-scale data processing, real-time analytics, and complex scientific simulations.
+Determinism: All computations on Ethereum must be deterministic, meaning they should produce the same output given the same input. Non-deterministic operations are not suitable for Ethereum as they could lead to inconsistencies across different nodes validating the transactions.
+Storage and Data Limitations: Ethereum has limitations in terms of on-chain data storage. Storing large amounts of data on the blockchain is impractical due to cost and efficiency considerations. As a result, Ethereum is not well-suited for applications that require extensive data storage.
+External Data Access: Smart contracts in Ethereum cannot natively access external data or systems. They require oracles or other external mechanisms to interact with the outside world, which can introduce additional complexity and points of potential vulnerability.
+
 How do you implement a CRON job in a smart contract?
+Implementing a CRON job-like feature (scheduled tasks) in a smart contract, especially in platforms like Ethereum, poses a unique challenge because the Ethereum blockchain, by its nature, does not have a native concept of time-based triggers. The Ethereum Virtual Machine (EVM) does not support scheduling transactions or smart contract functions to be executed at a future time or on a recurring schedule directly. However, there are workarounds to achieve similar functionality:
+
+Use of External Triggers:
+Oracles or External Services: You can use external services or oracles that trigger a transaction at specific times. These services monitor the time off-chain and send a transaction to the blockchain to execute a function in the smart contract when the scheduled time arrives.
+Ethereum Alarm Clock: This is a protocol specifically designed for scheduling Ethereum transactions. It allows users to schedule transactions to be executed at a future block number or at a specific time.
+
+Incentivizing External Calls:
+Bounties for Execution: A smart contract can be designed to include a bounty or reward for external accounts who trigger its functions at the appropriate times. This incentivizes external actors to perform the necessary transactions to trigger contract functions.
+
+Utilize Block Numbers or Timestamps:
+Conditional Execution: You can write the smart contract logic to perform certain actions only if certain conditions regarding block numbers or timestamps are met. For instance, a function might only execute its logic if the current block timestamp is greater than a predefined value.
+Limitation: This approach requires some external account to call the function after the condition is met. It's not autonomous.
+
+Keepers in Decentralized Networks:
+Chainlink Keepers: Chainlink Keepers are decentralized services that can automate smart contract triggers. They can be used to schedule and execute calls to smart contracts at predefined intervals or under specific conditions.
+
+Events and Off-chain Listeners:
+Off-chain Monitoring: Another approach is to have an off-chain service (like a server with a CRON job) that listens for specific events emitted by your smart contract and then triggers a transaction as a response to those events at the required time.
+
 Since there is no OPCODE for http calls, how do you get outside data
+In Ethereum and most other blockchains, smart contracts cannot directly make HTTP calls or access external data due to the blockchain's design principles, particularly the need for every operation to be deterministic and verifiable by all nodes. This limitation is where "oracles" come into play. Oracles are services that provide a bridge between the blockchain and the external world. Here's how they work:
+
+Oracles as Data Providers:
+Oracles are third-party services that fetch data from the external world and feed it into the blockchain. This data can be anything from price feeds and weather data to the outcome of a sports game.
+Smart contracts can then access this external data through the oracle. The data is typically sent to the smart contract as part of a transaction's payload.
+
+Types of Oracles:
+Centralized Oracles: A single source provides the external data. While easier to implement, they introduce a point of centralization and potential vulnerability.
+Decentralized Oracles: Multiple sources aggregate data, which is then fed into the smart contract. This approach increases reliability and security by reducing dependence on a single data source.
+
+Chainlink:
+One of the most well-known decentralized oracle networks is Chainlink. It allows the integration of off-chain data into smart contracts in a secure and decentralized manner. Chainlink nodes fetch data from external sources and then aggregate and relay this data to smart contracts.
+
+Implementation Process:
+A smart contract requests data from an oracle.
+The oracle retrieves the data from an external source (like a web API).
+The oracle then submits this data back to the smart contract in a follow-up transaction.
+The smart contract executes its logic based on this external data.
+
+Security and Trust Considerations:
+The accuracy and security of a smart contract that relies on external data depend on the trustworthiness of the oracle. It's crucial to ensure that the oracle system is reliable and secure.
+In decentralized oracles, mechanisms like staking, reputation systems, and data source aggregation are used to ensure data integrity and reduce the risk of manipulation.
+
+Use Cases:
+Oracles are extensively used in decentralized finance (DeFi) for price feeds, in insurance smart contracts for real-world data (like weather or flight status), and in prediction markets.
+
+Oracles in the context of blockchain technology act as bridges between blockchains (which are closed, deterministic systems) and the outside world (which is non-deterministic and contains various data sources). They provide a way for smart contracts to access external data that they cannot natively fetch due to the blockchain's isolated environment. Here's how an oracle works technically:
+
+Data Request:
+A smart contract on the blockchain specifies the external data it needs. This request is either programmed into the contract's logic or triggered by a user's transaction.
+The data could be anything not natively accessible on the blockchain, such as temperature, stock prices, flight statuses, or even the outcome of a sports event.
+
+Oracle Node:
+An oracle node is a piece of software running outside the blockchain. Its purpose is to listen for these data requests from smart contracts.
+Once a request is detected, the oracle node will reach out to the specified external data source. This could involve making an HTTP request to a public API, querying a database, or even gathering sensor data.
+
+Data Retrieval and Processing:
+After fetching the required data from the external source, the oracle node processes it as needed to meet the format and requirements of the requesting smart contract.
+This step might involve aggregating data from multiple sources, verifying its authenticity, or converting it into a blockchain-compatible format.
+
+Submitting Data to the Blockchain:
+The oracle node then creates a transaction that includes this processed data and sends it back to the smart contract on the blockchain.
+This transaction, like all others on the blockchain, is validated and processed by the network's nodes. Once confirmed, the smart contract can use the provided data to execute its logic.
+
+Decentralized Oracles and Consensus:
+In a decentralized oracle network, like Chainlink, multiple independent oracle nodes respond to a data request. Each node fetches the data independently.
+The data from these various nodes is then aggregated to form a consensus on the accurate value. This aggregation can happen on-chain (where the consensus data is calculated by a smart contract on the blockchain) or off-chain (with only the final consensus value being submitted to the blockchain).
+Decentralized oracles mitigate the risk of data manipulation and single points of failure, as they do not rely on a single data source or a single oracle node.
+
+Security Mechanisms:
+Oracle networks often implement security mechanisms such as staking, reputation systems, or cryptographic proofs to ensure oracle nodes act honestly and provide accurate data.
