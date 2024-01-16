@@ -1,0 +1,11 @@
+Why did we create this unit called gas?
+
+
+
+What happen if these 2 hypothetical transactions were sent?*
+Bob only has 1 ether in his wallet
+Bob sends 1 ether to Alice with Tx 1
+At the same time, Bob sends 1 ether to Jim with Tx 2
+Since Ethereum is Turing complete, is it possible to do all kind of computation?
+How do you implement a CRON job in a smart contract?
+Since there is no OPCODE for http calls, how do you get outside data
